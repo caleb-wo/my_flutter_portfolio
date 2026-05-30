@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_portfolio_app/components.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -15,7 +18,47 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            CircleAvatar(
+              radius: 78.0,
+              backgroundColor: Colors.amberAccent,
+              child: CircleAvatar(
+                radius: 73.0,
+                backgroundColor: Colors.black,
+                child: CircleAvatar(
+                  radius: 70.0,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage('assets/main_headshot.webp'),
+                ),
+              ),
+            ),
+            SizedBox(height: 15.0),
+            SansBold('Caleb Wolfe', 30.0),
+            Divider(color: Colors.black),
+            Row(
+              mainAxisAlignment: .spaceEvenly,
+              children: [
+                UrlLauncher(
+                  path: 'https://www.instagram.com/ca.ma.wolfe',
+                  svgAssetPath: 'assets/instagram.svg',
+                ),
+                UrlLauncher(
+                  path: 'https://www.twitter.com',
+                  svgAssetPath: 'assets/twitter.svg',
+                ),
+                UrlLauncher(
+                  path: 'https://github.com/caleb-wo',
+                  svgAssetPath: 'assets/github.svg',
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -119,7 +162,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               mainAxisAlignment: .spaceEvenly,
               crossAxisAlignment: .center,
               children: [
-                Image.asset('assets/web.jpg', height: deviceHeight / 1.7),
+                Image.asset('assets/web.jpg', height: deviceWidth / 1.9),
                 Column(
                   crossAxisAlignment: .start,
                   mainAxisAlignment: .center,
@@ -275,71 +318,21 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               children: [
                 SansBold('What I do?', 40),
                 Row(
-                  mainAxisAlignment: .spaceEvenly,
+                  mainAxisAlignment: .spaceAround,
                   children: [
-                    Card(
-                      elevation: 30.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: .start,
-                          children: [
-                            Image.asset(
-                              'assets/webL.png',
-                              height: 200,
-                              width: 200,
-                            ),
-                            SizedBox(height: 10),
-                            SansBold('Web Development', 20.0),
-                          ],
-                        ),
-                      ),
+                    AnimatedCardWeb(
+                      imagePath: 'assets/webL.png',
+                      text: 'Web Development',
                     ),
-                    Card(
-                      elevation: 30.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: .start,
-                          children: [
-                            Image.asset(
-                              'assets/app.png',
-                              height: 200,
-                              width: 200,
-                              fit: .contain,
-                            ),
-                            SizedBox(height: 10),
-                            SansBold('Mobile Development', 20.0),
-                          ],
-                        ),
-                      ),
+                    AnimatedCardWeb(
+                      imagePath: 'assets/app.png',
+                      text: 'Mobile Development',
+                      fit: BoxFit.contain,
+                      reverse: true,
                     ),
-                    Card(
-                      elevation: 30.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: .center,
-                          children: [
-                            Image.asset(
-                              'assets/firebase.png',
-                              height: 200,
-                              width: 200,
-                            ),
-                            SizedBox(height: 10),
-                            SansBold('Backend Development', 20.0),
-                          ],
-                        ),
-                      ),
+                    AnimatedCardWeb(
+                      imagePath: 'assets/firebase.png',
+                      text: 'Full-Stack Development',
                     ),
                   ],
                 ),
@@ -399,9 +392,21 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   hint: 'Please enter your message.',
                   maxLines: 10,
                 ),
+                MaterialButton(
+                  elevation: 20.0,
+                  height: 60.0,
+                  minWidth: 200.0,
+                  color: Colors.amber[300],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () => {},
+                  child: SansBold('Sumbit', 20.0),
+                ),
               ],
             ),
           ),
+          SizedBox(height: 20.0),
         ],
       ),
     );
