@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TabsWeb extends StatefulWidget {
@@ -72,13 +73,13 @@ class Sans extends StatelessWidget {
 }
 
 class TextForm extends StatelessWidget {
-  const TextForm({
+  TextForm({
     super.key,
     required this._width,
     required this._heading,
     required this._hint,
-    required this._lines,
-  });
+    int? maxLines,
+  }) : _lines = maxLines ?? 1;
 
   final String _heading;
   final String _hint;

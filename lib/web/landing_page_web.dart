@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio_app/components.dart';
 
 class LandingPageWeb extends StatefulWidget {
@@ -13,6 +12,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: Drawer(),
@@ -363,9 +363,41 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                           heading: 'First Name',
                           hint: 'Please enter your first name.',
                         ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        TextForm(
+                          width: 350.0,
+                          heading: 'Email',
+                          hint:
+                              'Please enter your email. (e.g., example@example.com)',
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextForm(
+                          width: 350.0,
+                          heading: 'Last Name',
+                          hint: 'Please enter your last name.',
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        TextForm(
+                          width: 350.0,
+                          heading: 'Phone Number',
+                          hint: 'Please type your phone number.',
+                        ),
                       ],
                     ),
                   ],
+                ),
+                TextForm(
+                  width: deviceWidth / 1.5,
+                  heading: 'Message',
+                  hint: 'Please enter your message.',
+                  maxLines: 10,
                 ),
               ],
             ),
