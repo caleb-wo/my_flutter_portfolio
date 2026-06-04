@@ -9,22 +9,19 @@ class Routes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => LayoutBuilder(
-            builder: ((context, constraints) =>
-              (constraints.maxWidth > 767)
-                  ? LandingPageWeb()
-                  : LandingPageMobile()
-            ),
+            builder: ((context, constraints) => (constraints.maxWidth > 767)
+                ? LandingPageWeb()
+                : LandingPageMobile()),
           ),
         );
       default:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => LayoutBuilder(
-            builder: ((context, constraints) =>
-              (constraints.maxWidth > 767)
-                  ? LandingPageWeb()
-                  : LandingPageMobile()
-            ),
+            builder: ((context, constraints) => (constraints.maxWidth > 767)
+                ? LandingPageWeb()
+                : LandingPageMobile()),
+          ),
         );
     }
   }
