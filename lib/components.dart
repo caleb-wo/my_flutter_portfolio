@@ -41,6 +41,40 @@ class _TabsWebState extends State<TabsWeb> {
   }
 }
 
+class TabsMobile extends StatefulWidget {
+  final String text;
+  final String route;
+
+  TabsMobile({
+    super.key,
+    required this.text,
+    required this.route,
+  });
+
+  @override
+  createState() => _TabsMobileState();
+}
+
+class _TabsMobileState extends State<TabsMobile> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      elevation: 20.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: .circular(5.0),
+      ),
+      height: 50.0,
+      minWidth: 100.0,
+      color: Colors.black,
+      onPressed: () => null,
+      child: Text(
+        widget.text,
+        style: GoogleFonts.openSans(fontSize: 20.0, color: Colors.white),
+      ),
+    );
+  }
+}
+
 class SansBold extends StatelessWidget {
   const SansBold(this.content, this.size, {super.key});
   final String content;
