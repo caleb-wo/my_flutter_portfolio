@@ -8,6 +8,26 @@ class ContactWeb extends StatefulWidget {
 class _ContactWebState extends State<ContactWeb> {
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    final deviceWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Colors.white
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            CircleAvatar(
+              radius: 77.0,
+              backgroundColor: Colors.amberAccent,
+              child: CircleAvatar(
+                radius: 72.0,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/main_headshot.webp'),
+              ),
+            )
+          ],
+        ),
+      )
+    );
   }
 }
