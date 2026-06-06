@@ -214,8 +214,75 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
             crossAxisAlignment: .center,
             children: [
               SansBold('What I do', 35.0),
+              AnimatedCard(
+                imagePath: 'assets/webL.png',
+                text: 'Web Development',
+                width: 250.0,
+              ),
+              SizedBox(height: 35.0),
+              AnimatedCard(
+                imagePath: 'assets/app.png',
+                text: 'Mobile Development',
+                fit: BoxFit.contain,
+                reverse: true,
+                width: 250.0,
+              ),
+              SizedBox(height: 35.0),
+              AnimatedCard(
+                imagePath: 'assets/firebase.png',
+                text: 'Full-Stack Development',
+                width: 250.0,
+              ),
+              SizedBox(height: 60.0),
             ],
           ),
+          // Contact: Fourth Section
+          Wrap(
+            runSpacing: 20.0,
+            spacing: 20.0,
+            alignment: .center,
+            children: [
+              SansBold('Contact Me', 35.0),
+              TextForm(
+                width: deviceWidth / 1.4,
+                heading: 'First Name',
+                hint: 'Please enter your first name.',
+              ),
+              TextForm(
+                width: deviceWidth / 1.4,
+                heading: 'Last Name',
+                hint: 'Please enter your last name.',
+              ),
+              TextForm(
+                width: deviceWidth / 1.4,
+                heading: 'Email',
+                hint: 'Please enter your email.',
+              ),
+              TextForm(
+                width: deviceWidth / 1.4,
+                heading: 'Phone',
+                hint: 'Please enter your phone number.',
+              ),
+              TextForm(
+                width: deviceWidth / 1.4,
+                heading: 'Message',
+                hint: 'Please enter a message for me.',
+                maxLines: 10,
+              ),
+              MaterialButton(
+                onPressed: () => Placeholder(),
+                elevation: 20.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: .circular(10.0),
+                ),
+                height: 60.0,
+                minWidth: deviceWidth / 2.2,
+                color: Colors.amberAccent,
+                child: SansBold('Sumbit', 20.0),
+              ),
+            ],
+          ),
+          SizedBox(height: 20.0),
         ],
       ),
     );

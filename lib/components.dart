@@ -5,7 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class TabsWeb extends StatefulWidget {
   final String title;
-  const TabsWeb(this.title, {super.key});
+  final String route;
+  const TabsWeb({
+    super.key,
+    required this.title,
+    required this.route,
+  });
 
   @override
   State<TabsWeb> createState() => _TabsWebState();
@@ -16,26 +21,29 @@ class _TabsWebState extends State<TabsWeb> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => isSelected = true),
-      onExit: (_) => setState(() => isSelected = false),
-      child: AnimatedDefaultTextStyle(
-        curve: Curves.easeInOut,
-        duration: const Duration(milliseconds: 145),
-        style: isSelected
-            ? GoogleFonts.abel(
-                color: Colors.black,
-                fontSize: 23.0,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
-                decorationThickness: 1,
-                decorationColor: Colors.amberAccent,
-                backgroundColor: Colors.amber[50],
-                letterSpacing: 1.2,
-              )
-            : GoogleFonts.abel(color: Colors.black, fontSize: 20.0),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, widget.route),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => isSelected = true),
+        onExit: (_) => setState(() => isSelected = false),
+        child: AnimatedDefaultTextStyle(
+          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 145),
+          style: isSelected
+              ? GoogleFonts.abel(
+                  color: Colors.black,
+                  fontSize: 23.0,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 1,
+                  decorationColor: Colors.amberAccent,
+                  backgroundColor: Colors.amber[50],
+                  letterSpacing: 1.2,
+                )
+              : GoogleFonts.abel(color: Colors.black, fontSize: 20.0),
 
-        child: Text(widget.title),
+          child: Text(widget.title),
+        ),
       ),
     );
   }
@@ -66,7 +74,7 @@ class _TabsMobileState extends State<TabsMobile> {
       height: 50.0,
       minWidth: 100.0,
       color: Colors.black,
-      onPressed: () => null,
+      onPressed: () => Navigator.pushNamed(context, widget.route),
       child: Text(
         widget.text,
         style: GoogleFonts.openSans(fontSize: 20.0, color: Colors.white),
@@ -172,25 +180,29 @@ class TextForm extends StatelessWidget {
   }
 }
 
-class AnimatedCardWeb extends StatefulWidget {
+class AnimatedCard extends StatefulWidget {
   final String _imagePath;
   final String _text;
   final BoxFit? _fit;
   final bool _reverse;
+  final double? _height;
+  final double? _width;
 
-  AnimatedCardWeb({
+  AnimatedCard({
     super.key,
     required this._imagePath,
     required this._text,
     this._fit,
     this._reverse = false,
+    this._height,
+    this._width,
   });
 
   @override
-  State<AnimatedCardWeb> createState() => _AnimatedCardWebState();
+  State<AnimatedCard> createState() => _AnimatedCardState();
 }
 
-class _AnimatedCardWebState extends State<AnimatedCardWeb>
+class _AnimatedCardState extends State<AnimatedCard>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
@@ -220,13 +232,13 @@ class _AnimatedCardWebState extends State<AnimatedCardWeb>
             children: [
               Image.asset(
                 widget._imagePath,
-                height: 200,
-                width: 200,
+                height: widget._height ?? 200.0,
+                width: widget._width ?? 200.0,
                 fit: widget._fit,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.0),
               SansBold(widget._text, 20.0),
-              SizedBox(width: 250),
+              SizedBox(width: 250.0),
             ],
           ),
         ),
