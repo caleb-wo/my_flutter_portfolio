@@ -40,7 +40,7 @@ class _TabsWebState extends State<TabsWeb> {
                   backgroundColor: Colors.amber[50],
                   letterSpacing: 1.2,
                 )
-              : GoogleFonts.abel(color: Colors.black, fontSize: 20.0),
+              : GoogleFonts.abel(color: Colors.black, fontSize: 30.0),
 
           child: Text(widget.title),
         ),
