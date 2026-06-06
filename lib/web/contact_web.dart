@@ -12,7 +12,7 @@ class _ContactWebState extends State<ContactWeb> {
 
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: Colors.white
+        backgroundColor: Colors.white,
         child: Column(
           mainAxisAlignment: .center,
           children: [
