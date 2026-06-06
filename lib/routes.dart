@@ -14,6 +14,15 @@ class Routes {
                 : LandingPageMobile()),
           ),
         );
+      case '/contact':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => LayoutBuilder(
+            builder: ((context, constraints) => (constraints.maxWidth > 767)
+                ? ContactWeb()
+                : ContactMobile()),
+          ),
+        )
       default:
         return MaterialPageRoute(
           settings: settings,
